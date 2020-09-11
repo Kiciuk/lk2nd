@@ -78,10 +78,11 @@ static void parse_boot_args(void)
 {
 	char *saveptr;
 	char *args = strdup(lk2nd_dev.cmdline);
-
 	char *arg = strtok_r(args, " ", &saveptr);
+	
 	while (arg) {
 		const char *aboot = strpresuf(arg, "androidboot.");
+		const char *panel_entry = strpresuf(arg, "mdss_mdp.");
 		if (aboot) {
 			parse_arg(aboot, "device=", &lk2nd_dev.device);
 			parse_arg(aboot, "bootloader=", &lk2nd_dev.bootloader);
@@ -89,7 +90,11 @@ static void parse_boot_args(void)
 			parse_arg(aboot, "carrier=", &lk2nd_dev.carrier);
 			parse_arg(aboot, "radio=", &lk2nd_dev.radio);
 		}
-
+		
+		if (panel_entry){
+		parse_arg(panel_entry, "panel=1:dsi:0:", &lk2nd_dev.panel_name);
+		}
+		
 		if (!strcmp(arg, "lk2dm")) {
 			lk2nd_dev.dev_mode = true;
 		}
