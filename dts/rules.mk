@@ -14,9 +14,10 @@ ifeq ($(PROJECT), msm8953-secondary)
 DTBS += \
 	$(LOCAL_DIR)/sdm450-samsung-r04.dtb \
 	$(LOCAL_DIR)/msm8953-xiaomi-mido.dtb \
-	$(LOCAL_DIR)/sdm625-xiaomi-tissot.dtb
+	$(LOCAL_DIR)/sdm625-xiaomi-tissot.dtb 
 endif
 ifeq ($(PROJECT), msm8952-secondary)
 DTBS += \
-	$(LOCAL_DIR)/msm8940-xiaomi-santoni.dtb
+	$(LOCAL_DIR)/msm8940-xiaomi-santoni.dtb \
+	$(LOCAL_DIR)/msm8976-leeco-s2.dtb
 endif

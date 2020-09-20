@@ -306,6 +306,8 @@ char block_size_string[MAX_RSP_SIZE];
 char bootloader_version_string[MAX_RSP_SIZE];
 #endif
 
+
+
 #if CHECK_BAT_VOLTAGE
 char battery_voltage[MAX_RSP_SIZE];
 char battery_soc_ok [MAX_RSP_SIZE];
@@ -324,6 +326,7 @@ extern int fastboot_trigger(void);
 static bool is_cmd_fastboot_allowed(const char *arg, int cmd)
 {
 	if (target_build_variant_user()) {
+
 		switch (cmd) {
 		case CMD_FLASH:
 			/* if device is locked:
@@ -2535,6 +2538,8 @@ static void set_device_unlock(int type, bool status)
 		write_misc(0, &msg, sizeof(msg));
 
 		fastboot_okay("");
+
+
 		reboot_device(RECOVERY_MODE);
 	}
 }
@@ -3863,6 +3868,9 @@ void cmd_oem_unlock_go(const char *arg, void *data, unsigned sz)
 		write_misc(0, &msg, sizeof(msg));
 
 		fastboot_okay("");
+
+
+
 		reboot_device(RECOVERY_MODE);
 	}
 	fastboot_okay("");
@@ -4477,10 +4485,15 @@ void aboot_init(const struct app_descriptor *app)
 	}
 	ASSERT((MEMBASE + MEMSIZE) > MEMBASE);
 
+
 	lk2nd_init();
+
+
 	read_device_info(&device);
+
 	read_allow_oem_unlock(&device);
 
+/* It havent crash yet */
 	/* Detect multi-slot support */
 	if (partition_multislot_is_supported())
 	{
@@ -4498,7 +4511,8 @@ void aboot_init(const struct app_descriptor *app)
 		}
 	}
 
-	/* Display splash screen if enabled */
+
+
 #if DISPLAY_SPLASH_SCREEN
 #if NO_ALARM_DISPLAY
 	if (!check_alarm_boot()) {
@@ -4525,14 +4539,21 @@ void aboot_init(const struct app_descriptor *app)
 #endif
 #endif
 
+
 	target_serialno((unsigned char *) sn_buf);
 	dprintf(SPEW,"serial number: %s\n",sn_buf);
+
 
 	memset(display_panel_buf, '\0', MAX_PANEL_BUF_SIZE);
 
 	/* Check if we should do something other than booting up */
+
+
+
 	if (keys_get_state(KEY_VOLUMEUP) && keys_get_state(KEY_VOLUMEDOWN))
 	{
+	
+
 		dprintf(ALWAYS,"dload mode key sequence detected\n");
 		reboot_device(EMERGENCY_DLOAD);
 		dprintf(CRITICAL,"Failed to reboot into dload mode\n");
@@ -4548,10 +4569,13 @@ void aboot_init(const struct app_descriptor *app)
 				lk2nd_dev.dev_mode)
 			boot_into_fastboot = true;
 	}
+
 	#if NO_KEYPAD_DRIVER
 	if (fastboot_trigger())
 		boot_into_fastboot = true;
 	#endif
+
+
 
 #if USE_PON_REBOOT_REG
 	reboot_mode = check_hard_reboot_mode();

@@ -79,6 +79,7 @@ void kmain(void)
 	// do any super early target initialization
 	target_early_init();
 
+
 	dprintf(INFO, "welcome to lk\n\n");
 	bs_set_timestamp(BS_BL_START);
 
@@ -106,6 +107,7 @@ void kmain(void)
 
 #if (!ENABLE_NANDWRITE)
 	// create a thread to complete system initialization
+	
 	dprintf(SPEW, "creating bootstrap completion thread\n");
 	thr = thread_create("bootstrap2", &bootstrap2, NULL, DEFAULT_PRIORITY, DEFAULT_STACK_SIZE);
 	if (!thr)
@@ -130,7 +132,6 @@ int main(void);
 static int bootstrap2(void *arg)
 {
 	dprintf(SPEW, "top of bootstrap2()\n");
-
 	arch_init();
 
 	// XXX put this somewhere else
@@ -148,10 +149,9 @@ static int bootstrap2(void *arg)
 	// initialize the target
 	dprintf(SPEW, "initializing target\n");
 	target_init();
-
+	
 	dprintf(SPEW, "calling apps_init()\n");
 	apps_init();
-
 	return 0;
 }
 

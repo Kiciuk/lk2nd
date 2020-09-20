@@ -7,9 +7,10 @@
 
 struct lk2nd_device {
 	void *fdt;
+	struct board_id board_id;
 	const char *model;
 	const char *cmdline;
-
+	
 	const char *device;
 	const char *bootloader;
 	const char *serialno;

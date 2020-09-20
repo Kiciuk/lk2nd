@@ -529,7 +529,6 @@ mmc_boot_decode_and_save_cid(struct mmc_card *card, unsigned int *raw_cid)
 	dprintf(SPEW, "Product serial number: %X\n", mmc_cid.psn);
 	dprintf(SPEW, "Manufacturing date: %d %d\n", mmc_cid.month,
 		mmc_cid.year);
-
 	return MMC_BOOT_E_SUCCESS;
 }
 
@@ -2395,6 +2394,8 @@ void mmc_display_csd(void)
  */
 unsigned int mmc_boot_main(unsigned char slot, unsigned int base)
 {
+
+
 	unsigned int mmc_ret = MMC_BOOT_E_SUCCESS;
 
 	memset((struct mmc_host *)&mmc_host, 0,

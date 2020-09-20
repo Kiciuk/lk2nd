@@ -125,6 +125,7 @@ int smd_init(smd_channel_info_t *ch, uint32_t ch_type)
 	smd_channel_alloc_entry = (smd_channel_alloc_entry_t*)memalign(CACHE_LINE, SMD_CHANNEL_ALLOC_MAX);
 	ASSERT(smd_channel_alloc_entry);
 
+
 	dprintf(INFO, "Waiting for the RPM to populate smd channel table\n");
 
 	do
