@@ -1,0 +1,109 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+/include/ "msm8952.dtsi"
+
+/ {
+	// This is used by the bootloader to find the correct DTB 
+	qcom,msm-id = <266 0x0>;
+	qcom,board-id= <0x08 0>;
+	model = "Xiaomi Redmi Note 3 Pro";
+	compatible = "xiaomi,kenzo", "qcom,msm8956","qcom,qrd", "lk2nd,device";
+
+
+reserved-memory  {
+		
+		#address-cells = < 0x02 >;
+		#size-cells = < 0x02 >;
+
+		other_ext_region@0 {
+			linux,reserve-contiguous-region;
+			linux,reserve-region;
+			linux,remove-completely;
+			reg = < 0x00 0x86300000 0x00 0x500000 >;
+			label = "other_ext_mem";
+		};
+
+		modem_region@0 {
+			linux,reserve-contiguous-region;
+			linux,reserve-region;
+			linux,remove-completely;
+			reg = < 0x00 0x86c00000 0x00 0x5600000 >;
+			label = "modem_mem";
+			linux,phandle = < 0x129 >;
+			phandle = < 0x129 >;
+		};
+
+		reloc_region@0 {
+			linux,reserve-contiguous-region;
+			linux,reserve-region;
+			linux,remove-completely;
+			reg = < 0x00 0x8c200000 0x00 0x1700000 >;
+			label = "reloc_mem";
+			linux,phandle = < 0x117 >;
+			phandle = < 0x117 >;
+		};
+
+		venus_region@0 {
+			linux,reserve-contiguous-region;
+			linux,memory-limit = < 0x90000000 >;
+			reg = < 0x00 0x00 0x00 0x500000 >;
+			label = "venus_mem";
+			linux,phandle = < 0x114 >;
+			phandle = < 0x114 >;
+		};
+
+		secure_region@0 {
+			linux,reserve-contiguous-region;
+			reg = < 0x00 0x00 0x00 0x8100000 >;
+			label = "secure_mem";
+			linux,phandle = < 0x27 >;
+			phandle = < 0x27 >;
+		};
+
+		qseecom_region@0 {
+			linux,reserve-contiguous-region;
+			reg = < 0x00 0x00 0x00 0x1000000 >;
+			label = "qseecom_mem";
+			linux,phandle = < 0x28 >;
+			phandle = < 0x28 >;
+		};
+
+		audio_region@0 {
+			linux,reserve-contiguous-region;
+			reg = < 0x00 0x00 0x00 0x314000 >;
+			linux,phandle = < 0x29 >;
+			phandle = < 0x29 >;
+		};
+
+		splash_region@83000000 {
+			linux,reserve-contiguous-region;
+			linux,reserve-region;
+			reg = < 0x00 0x83000000 0x00 0x2800000 >;
+			label = "cont_splash_mem";
+			linux,phandle = < 0xaa >;
+			phandle = < 0xaa >;
+		};
+
+		adsp_region@0 {
+			linux,reserve-contiguous-region;
+			reg = < 0x00 0x00 0x00 0x400000 >;
+			label = "adsp_mem";
+			linux,phandle = < 0x15d >;
+			phandle = < 0x15d >;
+		};
+
+		tzapp_region@0 {
+			linux,reserve-contiguous-region;
+			linux,reserve-region;
+			linux,remove-completely;
+			reg = < 0x00 0x8dd00000 0x00 0x1900000 >;
+			label = "tzapp_mem";
+		};
+	};
+
+
+
+	
+};
