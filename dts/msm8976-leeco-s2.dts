@@ -10,6 +10,7 @@
 	qcom,board-id= <0xb 0>;
 	model = "LeEco Le 2 (s2)";
 	compatible = "leeco,s2", "qcom,msm8976","qcom,msm8976-qrd-skun", "qcom,msm8976-qrd","qcom,qrd", "lk2nd,device";
+lk2nd,pstore = <0x9ff00000 0x100000>;
 
 	
 };
