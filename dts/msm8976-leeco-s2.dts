@@ -1,0 +1,15 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+/include/ "msm8976.dtsi"
+
+/ {
+	// This is used by the bootloader to find the correct DTB 
+	qcom,msm-id = <278 0x10001>;
+	qcom,board-id= <0xb 0>;
+	model = "LeEco Le 2 (s2)";
+	compatible = "leeco,s2", "qcom,msm8976","qcom,msm8976-qrd-skun", "qcom,msm8976-qrd","qcom,qrd", "lk2nd,device";
+
+	
+};
