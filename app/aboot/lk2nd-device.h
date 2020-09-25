@@ -15,7 +15,7 @@ struct lk2nd_device {
 	const char *serialno;
 	const char *carrier;
 	const char *radio;
-
+	const char *panel_name;
 	void *pstore;
 	unsigned int pstore_size;
 	bool dev_mode;

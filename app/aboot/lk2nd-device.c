@@ -90,6 +90,14 @@ static void parse_boot_args(void)
 			parse_arg(aboot, "radio=", &lk2nd_dev.radio);
 		}
 
+const char *panel_entry = strpresuf(arg, "mdss_mdp.");
+		if (panel_entry){
+			const char *panel_string;
+			parse_arg(panel_entry, "panel=1:dsi:0:", &panel_string);
+ 			char *panel_compatible= strtok(panel_string, ":");
+			lk2nd_dev.panel_name=panel_compatible;
+
+		}
 		if (!strcmp(arg, "lk2dm")) {
 			lk2nd_dev.dev_mode = true;
 		}
