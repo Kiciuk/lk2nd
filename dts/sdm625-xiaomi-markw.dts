@@ -1,0 +1,17 @@
+// SPDX-License-Identifier: GPL-2.0-only
+
+/dts-v1/;
+
+/include/ "msm8953.dtsi"
+
+/ {
+	// This is used by the bootloader to find the correct DTB 
+	qcom,msm-id = <293 0x0>;
+	qcom,board-id= <0x1000b 0>;
+
+	model = "Xiaomi Redmi 4 Prime (markw)";
+	compatible = "xiaomi,markw", "qcom,msm8953", "lk2nd,device";
+  lk2nd,match-bootloader = "*board_id=S88553AA1*";
+	lk2nd,pstore = <0x9ff00000 0x100000>;
+
+};
